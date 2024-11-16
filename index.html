@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Wellbeing Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add fade-out effect */
+        .fade-out {
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Mental Health and Student Wellbeing</h1>
+            <nav>
+                <ul>
+                    <li><a href="#apps-resources" onclick="reloadAndScrollToSection('apps-resources')">Apps & Resources</a></li>
+                    <li><a href="#virtual-counselling" onclick="reloadAndScrollToSection('virtual-counselling')">Virtual Counselling</a></li>
+                    <li><a href="#stress-tools" onclick="reloadAndScrollToSection('stress-tools')">Stress Management Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="apps-resources" class="full-page-section">
+            <div class="overlay">
+                <div class="container">
+                    <h2>Apps and Resources for Student Mental Health</h2>
+                    <p>Explore a variety of apps and resources aimed at supporting student mental health. From meditation apps to journaling tools, there are many ways to improve your mental wellness.</p>
+                    <button class="explore-btn" onclick="handleButtonClick('apps-resources')">Explore Apps & Resources</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="virtual-counselling" class="full-page-section">
+            <div class="overlay">
+                <div class="container">
+                    <h2>Virtual Counselling and Peer Support Platforms</h2>
+                    <p>Access virtual counselling services and join peer support groups to connect with others who understand what you're going through. We're here to support you.</p>
+                    <a href="s2.html"><button class="explore-btn" onclick="handleButtonClick('virtual-counselling')">Explore Counselling Platforms</button></a>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="stress-tools" class="full-page-section">
+            <div class="overlay">
+                <div class="container">
+                    <h2>Tools to Reduce Student Stress and Manage Time</h2>
+                    <p>Find tools that help you manage your time effectively and reduce stress. From productivity apps to study planners, learn how to stay organized and calm.</p>
+                    <button class="explore-btn" onclick="handleButtonClick('stress-tools')">Discover Stress Management Tools</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Student Wellbeing Portal. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        //redirectingg
+        function handleButtonClick(section) {
+            
+            document.body.classList.add('fade-out');
+
+            
+            setTimeout(function() {
+                window.location.href = 's1.html';
+            }, 500);
+        }
+    </script>
+</body>
+</html>

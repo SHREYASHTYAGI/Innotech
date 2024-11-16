@@ -14,7 +14,7 @@
 
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4; /* Default Light Mode */
+      background-color: #f4f4f4; 
       color: black;
       transition: all 0.3s ease;
     }
@@ -165,7 +165,73 @@
 
     .light-mode #bar {
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+
     }
+    .k {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  font-size: 20px;
+  padding: 10px 15px;
+  background-color: #4CAF50; 
+  color: white; 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.k:hover {
+  background-color: #45a049;
+}
+@media (max-width: 768px) {
+  .k {
+    bottom: 10px; 
+    font-size: 18px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .k {
+    bottom: 5px; 
+    left: 10px;
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+}
+.imga{
+  bottom: 60px;
+  position: fixed;
+  left: 50px;
+  height: 10vh;
+
+animation: bounce 2s infinite;
+
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100%{
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+@media(max-width:768px){
+   .imga{
+    bottom: 40px;
+    left: 40px;
+  height: 10vh;
+   }
+}
+
+
   </style>
 </head>
 <body class="light-mode">
@@ -183,6 +249,15 @@
     <a href="https://www.anxietycanada.com/resources/mindshift-cbt/"><button class="app" style="background-image: url(mindshift.png);"></button></a>
     <a href="https://mystrength.com/"><button class="app" style="background-image: url(mystrength.png);"></button></a>
     <a href="https://www.sanvello.com/blog/tag/self-care/"><button class="app" style="background-image: url(sanvello.png);"></button></a>
+  </div>
+  <img src="360_F_498891105_gkItqx7y1xlIFzVlryJ9VToFWVmgZa2M-removebg-preview.png"  class="imga">
+  <button class="k">Resources</button>
+  <div id="resources">
+   
+
+
+
+
   </div>
 
   <button id="mode-toggle" onclick="toggleMode()">Switch to Dark Mode</button>
