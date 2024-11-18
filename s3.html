@@ -57,20 +57,19 @@
       transform: translateY(-3px);
     }
 
-    @media (max-width:768px){
-      h1{
+    @media (max-width:768px) {
+      h1 {
         font-size: 2.1rem;
-      margin-bottom: 15px;
+        margin-bottom: 15px;
       }
-      p{
+      p {
         font-size: 1.4rem;
       }
-    button{
-      font-size: 1rem;
+      button {
+        font-size: 1rem;
+      }
     }
-    
-    }
-   
+
     @media (max-width: 480px) {
       h1 {
         font-size: 1.6rem;
@@ -84,60 +83,45 @@
         padding: 8px 16px;
         font-size: 0.85rem;
       }
-      
+    }
 
-    }
-    #main{
+    /* Blurred Background */
+    #ii {
+      height: 75vh;
+      width: 100vw;
       position: absolute;
-      top: 100%;
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-    }
-    #ii{
-      height: 75%;
-      width: 100vw;
-      position: absolute; top: 25vh;
-      background-image: url(157b13d4-0174-4d9f-8013-a445b5fe7813.jpg);
+      top: 25vh;
+      background-image: url('157b13d4-0174-4d9f-8013-a445b5fe7813.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-position: top center;
       z-index: -1;
       filter: blur(5px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    }
+
+    /* Animation for the Image */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
       }
-  .wo{
-    width: 400px;
-    position: absolute;
-    top: 30vh;
-    left: 20vw;
-animation: flash 0.4s ;
-  }
-  @keyframes flash{
-    0%{
-      transform: translateX(2000px);
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    50%{
-      transform: translateX(1000px);
+
+    /* Clear Image on top of the Blurred Background */
+    .wo {
+      width: 400px;
+      position: absolute;
+      top: 30vh;
+      left: 50vw;
+      transform: translateX(-50%);
+      animation: fadeInUp 1.5s ease-out forwards; /* Apply the animation */
+      opacity: 0; /* Start with the image hidden */
     }
-    100%{
-      transform: translateX(0px);
-    }
-    
-  }
-  .bo{
-    width: 40vw;
-    height: 30vh;
-   margin: 20px;
-   
-  }
-  
-   
   </style>
 </head>
 <body>
@@ -145,21 +129,13 @@ animation: flash 0.4s ;
     <h1>We're Here to Support You</h1>
     <p>Access virtual counseling and peer support tailored to your needs.</p>
     <button>Get Support Now</button>
-    
-   
   </header>
-  
-  <div id="ii">
-    
-  </div>
 
+  <!-- Blurred Background Container -->
+  <div id="ii"></div>
+  
+  <!-- Clear Image with Animation -->
   <img class="wo" src="a1b44ee0-b8a5-487a-864d-98b651d5a532-Photoroom.png" alt="">
 
-  </div>
-  <div id="main">
-    <button class="bo">CHAT BOX</button>
-    <button class="bo">RESOURCE LIBRARY</button>
-    <button class="bo">WORKOUT</button>
-  </div>
 </body>
 </html>
