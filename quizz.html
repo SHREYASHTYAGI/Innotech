@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Depression Screening Quiz</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      
+    }
+
+    .container {
+      width: 80%;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: absolute;
+      top: 20vh;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .question {
+      font-size: 18px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .options label {
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .options input {
+      margin-right: 8px;
+    }
+
+    .options label:hover {
+      background-color: #e7f7e7;
+      transform: scale(1.05);
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 30px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+      margin-top: 30px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .question-container {
+      display: none;
+    }
+
+    .loader {
+      display: none;
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #4CAF50;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 30px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1> Screening Quiz</h1>
+    
+    <div id="questionContainer" class="question-container">
+      <!-- Question will be dynamically inserted here -->
+    </div>
+
+    <button id="nextButton" onclick="nextQuestion()">Next</button>
+    
+    <div id="result" class="result"></div>
+    
+    <div id="loader" class="loader"></div>
+  </div>
+
+  <script>
+    // Questions and answers
+    const questions = [
+      {
+        question: "Over the last two weeks, how often have you been bothered by little interest or pleasure in doing things?",
+        options: ["Not at all", "Several days", "More than half the days", "Nearly every day"]
+      },
+      {
+        question: "Over the last two weeks, how often have you been feeling down, depressed, or hopeless?",
+        options: ["Not at all", "Several days", "More than half the days", "Nearly every day"]
+      },
+      {
+        question: "Over the last two weeks, how often have you had trouble falling or staying asleep, or sleeping too much?",
+        options: ["Not at all", "Several days", "More than half the days", "Nearly every day"]
+      },
+      {
+        question: "Over the last two weeks, how often have you felt tired or had little energy?",
+        options: ["Not at all", "Several days", "More than half the days", "Nearly every day"]
+      },
+      {
+        question: "Over the last two weeks, how often have you felt bad about yourself – or that you are a failure or have let yourself or your family down?",
+        options: ["Not at all", "Several days", "More than half the days", "Nearly every day"]
+      },
+      {
+        question: "Over the last two weeks, how often have you had trouble concentrating on things, such as reading the newspaper or watching television?",
+        options: ["Not at all", "Several days", "More than half the days", "Nearly every day"]
+      },
+      {
+        question: "Over the last two weeks, how often have you moved or spoken so slowly that other people could have noticed? Or the opposite – being so fidgety or restless that you have been moving around a lot more than usual?",
+        options: ["Not at all", "Several days", "More than half the days", "Nearly every day"]
+      },
+      {
+        question: "Over the last two weeks, how often have you had thoughts that you would be better off dead or of hurting yourself in some way?",
+        options: ["Not at all", "Several days", "More than half the days", "Nearly every day"]
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+    let selectedQuestions = [];
+    
+    // Randomly select 6 questions from the list
+    function getRandomQuestions() {
+      let randomQuestions = [];
+      let selectedIndexes = [];
+      
+      while (randomQuestions.length < 6) {
+        let index = Math.floor(Math.random() * questions.length);
+        if (!selectedIndexes.includes(index)) {
+          randomQuestions.push(questions[index]);
+          selectedIndexes.push(index);
+        }
+      }
+      return randomQuestions;
+    }
+
+    // Load the first question
+    function loadQuestion() {
+      const questionContainer = document.getElementById('questionContainer');
+      const currentQuestion = selectedQuestions[currentQuestionIndex];
+      
+      questionContainer.innerHTML = '';
+      
+      const questionDiv = document.createElement('div');
+      questionDiv.classList.add('question');
+      questionDiv.innerHTML = `<p>${currentQuestionIndex + 1}. ${currentQuestion.question}</p>`;
+
+      const optionsDiv = document.createElement('div');
+      optionsDiv.classList.add('options');
+
+      currentQuestion.options.forEach((option, i) => {
+        optionsDiv.innerHTML += `
+          <label>
+            <input type="radio" name="q${currentQuestionIndex}" value="${i}" onclick="saveAnswer(${i})">
+            ${option}
+          </label>
+        `;
+      });
+
+      questionDiv.appendChild(optionsDiv);
+      questionContainer.appendChild(questionDiv);
+      questionContainer.style.display = 'block';
+
+      document.getElementById('loader').style.display = 'none'; // Hide loader after question loads
+    }
+
+    // Save the user's answer
+    function saveAnswer(answer) {
+      userAnswers[currentQuestionIndex] = answer;
+    }
+
+    // Go to the next question
+    function nextQuestion() {
+      if (userAnswers[currentQuestionIndex] === undefined) {
+        alert('Please select an answer.');
+        return;
+      }
+
+      currentQuestionIndex++;
+
+      if (currentQuestionIndex < selectedQuestions.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    // Display the result
+    function showResult() {
+      const score = userAnswers.reduce((acc, answer) => acc + answer, 0);
+      let resultText = '';
+
+      if (score <= 6) {
+        resultText = 'You are experiencing minimal to no depression symptoms.';
+      } else if (score <= 12) {
+        resultText = 'You may be experiencing mild depression symptoms. Consider seeking support.';
+      } else if (score <= 18) {
+        resultText = 'You may be experiencing moderate depression symptoms. It could be helpful to talk to a professional.';
+      } else {
+        resultText = 'You may be experiencing severe depression symptoms. It is important to consult with a healthcare provider.';
+      }
+
+      document.getElementById('result').innerText = resultText;
+      document.getElementById('nextButton').style.display = 'none'; // Hide the next button
+    }
+
+    // Load the quiz questions when the page loads
+    window.onload = function() {
+      selectedQuestions = getRandomQuestions();
+      loadQuestion();
+    };
+  </script>
+</body>
+</html>
