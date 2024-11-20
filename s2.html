@@ -117,12 +117,13 @@
       height: 35vh;
       margin: 20px;
       display: flex;
-   align-items: center;
-    background-color: #f9eeee;
+      align-items: center;
+      background-color: #f9eeee;
       border-radius: 15px;
       box-shadow: 2px 4px 10px rgb(0, 0, 0);
       transition: transform 0.2s;
       overflow: hidden;
+      opacity: 0; /* Default opacity for animation */
     }
 
     .bo:hover {
@@ -137,16 +138,48 @@
       position: relative;
       left: -20px;
     }
-    
-    @media (max-width: 768px) {
-      .bo p{
-        font-size: 0.9rem;
+
+    /* Keyframes for animations */
+    @keyframes slide-in-left {
+      0% {
+        transform: translateX(-100vw);
+        opacity: 0;
       }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide-in-right {
+      0% {
+        transform: translateX(100vw);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide-in-bottom {
+      0% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+   
+
+    @media (max-width: 768px) {
       .bo {
         width: 60vw;
         height: 27vh;
       }
-      
     }
 
     @media (max-width: 480px) {
@@ -154,7 +187,6 @@
         width: 45vw;
         height: 20vh;
       }
-      
     }
   </style>
 </head>
@@ -168,17 +200,30 @@
   <div id="ii"></div>
  
   <div id="main">
-  <button class="bo" style="text-decoration: none;"> 
-       <img src="WhatsApp_Image_2024-11-20_at_12.17.26_7d3c888b-removebg-preview.png"   alt="Chat Box" > <p style="color: black;"><b>CHAT BOX</b> <br><br> "A global platform enabling users to communicate with the world while staying anonymous." </p>
-    </button></a>
+    <button class="bo" style="color: black; animation: slide-in-left 1.5s ease-out forwards; ">
+      <img src="WhatsApp_Image_2024-11-20_at_12.17.26_7d3c888b-removebg-preview.png" alt="Chat Box">
+      <p >
+        <b>CHAT BOX</b><br><br>"A global platform enabling users to communicate with the world while staying anonymous."
+      </p>
+    </button>
     
-    <a style="text-decoration: none;" href="https://markmanson.net/5-books-for-dealing-with-anxiety-and-depression"><button class="bo">
-      <img src="WhatsApp_Image_2024-11-20_at_12.28.01_761ec25e-removebg-preview.png" alt="Resource Library"> <p style="color: black;"> <b>RESOURCE LIBRARY</b> <br> <br> "Explore a curated collection of mental health tools, articles, and self-help resources designed to support students in managing stress and improving well-being."</p>
-    </button></a>
-    <a style="text-decoration: none;" href="https://www.innerpeacefellowship.org/how-to-meditate/?gad_source=1"><button class="bo">
-      <img  src="WhatsApp_Image_2024-11-20_at_16.03.42_ec939a88-removebg-preview.png" alt="Workout"> <p class="olt" style="color: black;"> <b>MEDITATION</b> <br><br> " Discover Meditation practice that promotes relaxation, reduces stress, and enhances mental clarity, fostering emotional balance and overall well-being."</p>
-    </button></a>
-    
+    <a style="text-decoration: none;" href="https://markmanson.net/5-books-for-dealing-with-anxiety-and-depression">
+      <button class="bo" style="animation: slide-in-bottom  1.3s ease-out forwards; ">
+        <img src="WhatsApp_Image_2024-11-20_at_12.28.01_761ec25e-removebg-preview.png" alt="Resource Library">
+        <p style="color: black;">
+          <b>RESOURCE LIBRARY</b><br><br>"Explore a curated collection of mental health tools, articles, and self-help resources designed to support students in managing stress and improving well-being."
+        </p>
+      </button>
+    </a>
+
+    <a style="text-decoration: none;" href="https://www.innerpeacefellowship.org/how-to-meditate/?gad_source=1">
+      <button class="bo" style="animation: slide-in-right 1.5s ease-out forwards; ">
+        <img src="WhatsApp_Image_2024-11-20_at_16.03.42_ec939a88-removebg-preview.png" alt="Meditation">
+        <p style="color: black;">
+          <b>MEDITATION</b><br><br>"Discover meditation practices that promote relaxation, reduce stress, and enhance mental clarity, fostering emotional balance and overall well-being."
+        </p>
+      </button>
+    </a>
   </div>
 </body>
 </html>
