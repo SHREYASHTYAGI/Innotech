@@ -12,8 +12,7 @@
       padding: 0;
       display: flex;
       align-items: center;
-      justify-content: center; 
-      
+      justify-content: center;
     }
 
     .container {
@@ -33,6 +32,25 @@
       color: #333;
       font-size: 24px;
       margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
     }
 
     .question {
@@ -96,7 +114,7 @@
       margin-top: 30px;
     }
 
-    .question-container {
+    .question-container, .quiz-form {
       display: none;
     }
 
@@ -120,8 +138,28 @@
 <body>
 
   <div class="container">
-    <h1> Screening Quiz</h1>
-    
+    <h1>Depression Screening Quiz</h1>
+
+    <!-- Age and Gender Form -->
+    <div id="initialForm" class="quiz-form">
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="1" required>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="" disabled selected>Select your gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+          <option value="Prefer not to say">Prefer not to say</option>
+        </select>
+      </div>
+      <button onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <!-- Quiz Questions -->
     <div id="questionContainer" class="question-container">
       <!-- Question will be dynamically inserted here -->
     </div>
@@ -173,7 +211,27 @@
     let currentQuestionIndex = 0;
     let userAnswers = [];
     let selectedQuestions = [];
-    
+
+    // Function to start the quiz after user enters age and gender
+    function startQuiz() {
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+      
+      if (!age || !gender) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Hide the initial form and show the quiz
+      document.getElementById('initialForm').style.display = 'none';
+      document.getElementById('questionContainer').style.display = 'block';
+      document.getElementById('nextButton').style.display = 'inline-block';
+
+      // Load the first question
+      selectedQuestions = getRandomQuestions();
+      loadQuestion();
+    }
+
     // Randomly select 6 questions from the list
     function getRandomQuestions() {
       let randomQuestions = [];
@@ -261,8 +319,7 @@
 
     // Load the quiz questions when the page loads
     window.onload = function() {
-      selectedQuestions = getRandomQuestions();
-      loadQuestion();
+      document.getElementById('initialForm').style.display = 'block';
     };
   </script>
 </body>
