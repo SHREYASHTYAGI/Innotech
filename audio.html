@@ -5,18 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stress Management Tools</title>
   <style>
-    /* Base styles */
     body {
       font-family: Arial, sans-serif;
-      background-color: #f0f4f8;
+      background-color: #f5f9fc;
       margin: 0;
       padding: 0;
+      color: #333;
     }
 
-    /* Header styles */
-    #fileee {
-      background-color: #d6e9f8;
-      padding: 15px 0;
+    #header {
+      background-color: #cfe2f3;
+      padding: 20px 0;
       text-align: center;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       position: fixed;
@@ -28,24 +27,21 @@
     h1 {
       margin: 0;
       font-size: 24px;
-      color: #333;
     }
 
-    /* Content container */
     .content {
-      padding-top: 80px; /* Space for the fixed header */
+      padding-top: 80px;
       padding-bottom: 40px;
       display: flex;
       justify-content: center;
     }
 
-    /* Grid container for images and list items */
     .grid-container {
       display: grid;
-      grid-template-columns: 1fr 1fr; /* 2 columns by default */
-      gap: 20px; /* Space between items */
-      max-width: 800px; /* Limit the container's width */
-      margin: 0 auto; /* Center the container */
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
       padding: 20px;
       background-color: #ffffff;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -58,7 +54,7 @@
       justify-content: center;
       flex-direction: column;
       text-align: center;
-      padding: 10px;
+      padding: 15px;
       background-color: #ffffff;
       border: 1px solid #d0d0d0;
       border-radius: 8px;
@@ -78,10 +74,9 @@
       border-radius: 8px;
     }
 
-    /* Media query for smaller screens */
     @media (max-width: 768px) {
       .grid-container {
-        grid-template-columns: 1fr; /* 1 column on smaller screens */
+        grid-template-columns: 1fr;
       }
 
       h1 {
@@ -92,28 +87,26 @@
 </head>
 <body>
 
-  <!-- Header Section -->
-  <div id="fileee">
+  <div id="header">
     <h1>Stress Management Tools</h1>
   </div>
 
-  <!-- Content Section -->
   <div class="content">
     <div class="grid-container">
       <div class="grid-item">
-        <li > <b style="font-size: larger;">Slow Song Playlist</b></li>
+        <li>Slow Song Playlist</li>
         <img src="7cc16e48-5658-40e8-bf42-1a0cd44cb331-removebg-preview.png" alt="Slow Song Playlist">
       </div>
       <div class="grid-item">
-        <li> <b style="font-size: larger;">Making small videos on memories</b></li>
+        <li>Making small videos on memories</li>
         <img src="77d242cd-3bef-431c-afae-61a741d8cae3-removebg-preview.png" alt="Making small videos">
       </div>
       <div class="grid-item">
-        <li> <b style="font-size: larger;">Scrolling</b> </li>
+        <li>Scrolling</li>
         <img src="1bed78eb-ff17-4402-8714-9854b1e10a27-removebg-preview.png" alt="Scrolling">
       </div>
       <div class="grid-item">
-        <li> <b style="font-size: larger;"> Creative activities</b></li>
+        <li>Creative activities</li>
         <img src="a86115b0-d8d4-4f63-94af-88b861eb50c5-removebg-preview.png" alt="Creative activities">
       </div>
     </div>

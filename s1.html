@@ -4,238 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      transition: all 0.3s ease;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4; 
-      color: black;
-      transition: all 0.3s ease;
-    }
-
-    .light-mode {
-      background-color: #f4f4f4;
-      color: black;
-    }
-
-    .dark-mode {
-      background-color: #121212;
-      color: white;
-    }
-
-    #bar {
-      background-color:#6ba0da;
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      height: 10vh;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 1.5rem;
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 4px solid #fff;
-      animation: typing 4s steps(40) 1s 1 normal both, blink 0.75s step-end infinite;
-    }
-
-    @keyframes blink {
-      50% {
-        border-color: transparent;
-      }
-    }
-
-    @keyframes typing {
-      from {
-        width: 0;
-      }
-      to {
-        width: 100%;
-      }
-    }
-
-    h1.typing-complete {
-      border-right: none;
-    }
-
-    .app {
-      height: 30vh;
-      width: 12vw;
-      background: linear-gradient(45deg, #FFEB3B, #8BC34A);
-      margin: 15px;
-      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
-      border-radius: 10px;
-      transition: all 0.3s ease-in-out;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    .app:hover {
-      width: 13vw;
-      height: 32vh;
-      box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3);
-      transform: translateY(-5px);
-    }
-
-    .app:active {
-      width: 11.9vw;
-      height: 30vh;
-      transition: none;
-    }
-
-    #appp, #apppss {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      padding: 20px;
-    }
-
-    @media (max-width: 768px) {
-      .app {
-        width: 25vh;
-        height: 35vh;
-      }
-
-      h1 {
-        font-size: 1.2rem;
-      }
-
-      .app:hover {
-        width: 27vh;
-        height: 35vh;
-      }
-
-      .app:active {
-        width: 25vh;
-        height: 32vh;
-        transition: none;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .app {
-        width: 70vw;
-        height: 15vh;
-      }
-
-      h1 {
-        font-size: 1rem;
-      }
-    }
-
-    #mode-toggle {
-      position: fixed;
-      top: 60px;
-      right: 0%;
-      background-color: #013266;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      z-index: 2000;
-    }
-
-    #mode-toggle:hover {
-      background-color: #45a049;
-    }
-
-    .light-mode .app {
-      box-shadow: 0 4px 5px rgba(0, 0, 0, 0.4);
-    }
-
-    .light-mode #bar {
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-
-    }
-    .k {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  font-size: 20px;
-  padding: 10px 15px;
-  background-color: #013266; 
-  color: white; 
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 1000;
-  font-weight: bolder;
-}
-
-.k:hover {
-  background-color: #45a049;
-
-}
-@media (max-width: 768px) {
-  .k {
-    bottom: 10px; 
-    font-size: 18px;
-    padding: 8px 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .k {
-    bottom: 5px; 
-    left: 10px;
-    font-size: 16px;
-    padding: 6px 10px;
-  }
-}
-.imga{
-  bottom: 60px;
-  position: fixed;
-  left: 85px;
-  height: 10vh;
-filter: drop-shadow(0px 2px 6px #121212);
-animation: bounce 2s infinite;
-
-}
-
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100%{
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-20px);
-  }
-  60% {
-    transform: translateY(-10px);
-  }
-}
-
-@media(max-width:768px){
-   .imga{
-    bottom: 40px;
-    left: 70px;
-  height: 10vh;
-   }
-}
-
-
-  </style>
+ <link rel="stylesheet" href="s1c.css">
+<script src="s1j.js" defer></script>
 </head>
 <body class="light-mode">
   <div id="bar" style="display: flex; align-items: center; justify-content: center;">
@@ -268,7 +38,7 @@ animation: bounce 2s infinite;
   <button id="mode-toggle" onclick="toggleMode()">Switch to Dark Mode</button>
 <div id="working">
 
-  <!-- How It Works Section -->
+  <!-- HIW -->
 <section id="how-it-works" style="background-color: #e5effa; padding: 50px 0;">
   <div style="text-align: center; margin-bottom: 30px;">
     <h2 style="font-size: 2rem; margin-bottom: 20px; color: #333;">How it works?</h2>
@@ -289,7 +59,7 @@ animation: bounce 2s infinite;
       <p style="color: #666; font-size: 0.9rem;">According to Symptoms connect to a doctor via text, phone, or video depending on the condition.</p>
     </div>
 
-    <!--Delivery of medication -->
+    <!--Delivery -->
     <div style="background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 300px; text-align: center;">
       <img src="6213580.png" alt="Delivery of medication" style="width: 80%; height: auto; margin-bottom: 20px;"/>
       <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: #333;">Delivery & reminder of medication</h3>
@@ -300,26 +70,5 @@ animation: bounce 2s infinite;
 </section>
 
 </div>
-  <script>
-    const header = document.getElementById('header');
-    const modeToggle = document.getElementById('mode-toggle');
-    const body = document.body;
-
-    header.addEventListener('animationend', () => {
-      header.classList.add('typing-complete');
-    });
-
-    function toggleMode() {
-      if (body.classList.contains('light-mode')) {
-        body.classList.remove('light-mode');
-        body.classList.add('dark-mode');
-        modeToggle.textContent = 'Switch to Light Mode';
-      } else {
-        body.classList.remove('dark-mode');
-        body.classList.add('light-mode');
-        modeToggle.textContent = 'Switch to Dark Mode';
-      }
-    }
-  </script>
 </body>
 </html>
